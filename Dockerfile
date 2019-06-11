@@ -12,7 +12,7 @@ apt-get clean && \
 rm -rf /var/lib/apt/lists/*
 
 #for python api
-RUN pip install --upgrade pip setuptools
+RUN pip3 install --upgrade pip setuptools
 RUN pip3 install numpy opencv-python scipy 
 
 #replace cmake as old version has CUDA variable bugs
