@@ -2,14 +2,33 @@ FROM nvidia/cuda:8.0-cudnn6-devel-ubuntu16.04
 
 #get deps
 RUN apt-get -y --no-install-recommends update && \
-apt-get -y --no-install-recommends upgrade && \
-DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-build-essential python3-dev python3-tk python3-pip python-setuptools git g++ wget make \
-libprotobuf-dev protobuf-compiler libopencv-dev libgoogle-glog-dev libboost-all-dev \
-libhdf5-dev libatlas-base-dev opencl-headers && \
-ldconfig && \
-apt-get clean && \
-rm -rf /var/lib/apt/lists/*
+	apt-get -y --no-install-recommends upgrade && \
+	apt-get install -y --no-install-recommends \
+	build-essential \
+	cmake \
+	git \
+	libatlas-base-dev \
+	libprotobuf-dev \
+	libleveldb-dev \
+	libsnappy-dev \
+	libhdf5-serial-dev \
+	protobuf-compiler \
+	libboost-all-dev \
+	libgflags-dev \
+	libgoogle-glog-dev \
+	liblmdb-dev \
+	pciutils \
+	python3-setuptools \
+	python3-dev \
+	python3-pip \
+	opencl-headers \
+	ocl-icd-opencl-dev \
+	libviennacl-dev \
+	libcanberra-gtk-module \
+	libopencv-dev && \
+    ldconfig && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 #for python api
 RUN pip3 install --upgrade pip setuptools
