@@ -5,7 +5,7 @@ RUN apt-get -y --no-install-recommends update && \
 	apt-get -y --no-install-recommends upgrade && \
 	apt-get install -y --no-install-recommends \
 	build-essential \
-	cmake \
+	wget \
 	git \
 	libatlas-base-dev \
 	libprotobuf-dev \
@@ -25,6 +25,7 @@ RUN apt-get -y --no-install-recommends update && \
 	ocl-icd-opencl-dev \
 	libviennacl-dev \
 	libcanberra-gtk-module \
+    libeigen3-dev \
 	libopencv-dev && \
     ldconfig && \
     apt-get clean && \
