@@ -1,11 +1,12 @@
 FROM nvidia/cuda:8.0-cudnn6-devel-ubuntu16.04
 
 #get deps
-RUN apt-get update && \
+RUN apt-get -y --no-install-recommends update && \
+apt-get -y --no-install-recommends upgrade && \
 DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
 build-essential python3-dev python3-tk python3-pip python-setuptools git g++ wget make \
 libprotobuf-dev protobuf-compiler libopencv-dev libgoogle-glog-dev libboost-all-dev \
-libcaffe-cuda-dev libhdf5-dev libatlas-base-dev opencl-headers && \
+libhdf5-dev libatlas-base-dev opencl-headers && \
 ldconfig && \
 apt-get clean && \
 rm -rf /var/lib/apt/lists/*
