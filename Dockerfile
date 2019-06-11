@@ -1,4 +1,4 @@
-FROM nvidia/cuda:8.0-cudnn5-devel-ubuntu16.04
+FROM nvidia/cuda:8.0-cudnn7-devel-ubuntu16.04
 
 #get deps
 RUN apt-get -y --no-install-recommends update && \
@@ -47,7 +47,8 @@ RUN git clone https://github.com/CMU-Perceptual-Computing-Lab/openpose.git .
 
 #build it
 WORKDIR /openpose/build
-RUN cmake -DBUILD_PYTHON=ON .. && make -j"$(nproc)"
+RUN cmake -DBUILD_PYTHON=ON .. 
+RUN make -j"$(nproc)"
 RUN echo 'export PYTHONPATH="/openpose/build/python/openpose"' > ~/.bashrc
 RUN echo 'alias python=python3' > ~/.bashrc
 RUN echo 'alias pip=pip3' > ~/.bashrc
